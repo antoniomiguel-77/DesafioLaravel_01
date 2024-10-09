@@ -14,6 +14,8 @@ Desenvolva uma aplicação de gerenciamento de tarefas com as seguintes funciona
 
 Você é livre para utilizar bibliotecas adicionais, desde que devidamente justificadas e documentadas.
 
+Consulte a descricao completa do Desafio: https://github.com/academia-sirius/DesafioLaravel_01/wiki/Teste-Pr%C3%A1tico:-API-RESTful-com-Laravel-e-Autentica%C3%A7%C3%A3o-via-JWT
+
 ### Regras Gerais
 - Fork este repositório para sua conta no GitHub.
 - Crie uma branch para trabalhar no desafio.
