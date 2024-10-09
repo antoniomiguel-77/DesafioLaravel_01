@@ -1,0 +1,37 @@
+name: PHP Laravel CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1' # Defina a versão do PHP que você está utilizando
+          extensions: mbstring, xml, bcmath, sqlite3, curl, zip
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: Run Tests
+        run: |
+          cp .env.example .env # Copie o arquivo de exemplo para .env
+          php artisan key:generate # Gere a chave da aplicação
+          php artisan migrate --env=testing # Execute as migrações no ambiente de teste
+          vendor/bin/phpunit # Execute os testes
+
+      - name: Check Code Style
+        run: vendor/bin/phpcs --standard=PSR12 app/
+
